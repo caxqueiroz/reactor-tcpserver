@@ -1,4 +1,4 @@
-package io.cax.debs2016;
+package io.cax.reactor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import reactor.Environment;
 import reactor.bus.EventBus;
+
 import reactor.spring.context.config.EnableReactor;
 
 /**
@@ -18,14 +19,15 @@ import reactor.spring.context.config.EnableReactor;
 @EnableReactor
 public class ReactorConfiguration {
 
+
     @Bean public EventBus eventBus() {
-        Environment env = Environment.initialize();
+        Environment.initialize();
         return EventBus.create(Environment.get());
     }
 
     @Bean
     public Logger log() {
-        return LoggerFactory.getLogger(Debs2016Application.class);
+        return LoggerFactory.getLogger(ServerApp.class);
     }
 
 }
